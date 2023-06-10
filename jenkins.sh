@@ -4,7 +4,7 @@ echo "Updating apt..."
 apt update
 
 echo "Installing docker and docker-compose..."
-apt install docker 
+apt install docker docker-compose 
 
 echo "Installing jenkins docker image and running it..."
 docker run --name jenkins_docker1 -d -p 8080:8080 -p50000:50000 \
