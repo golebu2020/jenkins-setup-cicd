@@ -3,6 +3,9 @@
 echo "Updating apt..."
 apt update
 
+echo "Install git.."
+apt install git
+
 echo "Installing docker and docker-compose..."
 apt install docker docker-compose
 
