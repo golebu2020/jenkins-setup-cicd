@@ -5,3 +5,5 @@ git clone https://github.com/golebu2020/jenkins-setup-cicd
 cd jenkins-setup-cicd
 <br />
 bash jenkins.sh
+<br/>
+docker-to-jenkins.sh
