@@ -38,3 +38,5 @@ apt install nodejs
 nodejs -v
 npm -v
 
+echo "You're logged in as a root user"
+
