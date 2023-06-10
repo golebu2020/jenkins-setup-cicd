@@ -10,7 +10,7 @@ echo "Installing jenkins docker image and running it..."
 docker run -dp8080:8080 -p50000:50000 \
 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
 
-ehco "Fetching the container id"
+echo "Fetching the container id"
 jenkins_container_id=docker ps -a -q
 
 echo "Log into the container as a root user"
