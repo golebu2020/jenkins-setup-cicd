@@ -6,4 +6,4 @@ cd jenkins-setup-cicd
 <br />
 bash jenkins.sh
 <br/>
-docker-to-jenkins.sh
+bash docker-to-jenkins.sh
