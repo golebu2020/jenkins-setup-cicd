@@ -27,3 +27,5 @@ docker exec -it jenkins_container_id bash
 echo "try to install redis container to test"
 docker pull redis
 
+echo "redis has been installed!"
+
