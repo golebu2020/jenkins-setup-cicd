@@ -3,4 +3,5 @@
 git clone https://github.com/golebu2020/jenkins-setup-cicd 
 <br />
 cd jenkins-setup-cicd
+<br />
 bash jenkins.sh
