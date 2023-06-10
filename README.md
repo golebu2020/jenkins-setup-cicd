@@ -2,7 +2,6 @@
 ## On the server, clone the project and access the file to setup jenkins on the server
 ### apt update
 ### apt install git 
-<br/>
 ### git clone https://github.com/golebu2020/jenkins-setup-cicd 
 <br />
 ### mv jenkins-setup-cicd/jenkins.sh ~
