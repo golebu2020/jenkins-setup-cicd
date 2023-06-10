@@ -22,4 +22,8 @@ echo "adding read-write permission for the file docker.sock"
 chmod 666 /var/run/docker.sock
 
 echo "logout and signin as a root user"
+docker exec -it jenkins_container_id bash
+
+echo "try to install redis container to test"
+docker pull redis
 
