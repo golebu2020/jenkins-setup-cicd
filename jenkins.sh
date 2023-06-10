@@ -3,13 +3,6 @@
 echo "Updating apt..."
 apt update
 
-echo "Install git.."
-apt install git
-
-git clone https://github.com/golebu2020/jenkins-setup-cicd
-cd jenkins-setup-cicd
-mv jenskins.sh ~
-
 echo "Installing docker and docker-compose..."
 apt install docker docker-compose
 
