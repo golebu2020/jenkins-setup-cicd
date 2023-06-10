@@ -50,6 +50,7 @@ echo "Fetching the container id"
 
 echo "Stop the container from running"
 
+jenkinscont1=docker ps -aqf jenkins_docker1
 docker stop $jenkinscont1
 
 docker run --name jenkins_docker2 -d -p 8080:8080 -p 50000:50000 \
