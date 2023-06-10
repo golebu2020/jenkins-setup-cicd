@@ -14,7 +14,7 @@ echo "Fetching the container id"
 jenkins_container_id=docker ps -a -q
 
 echo "Log into the container as a root user"
-docker exec -u 0 -it $jenkins_container_id sh
+docker exec -it -u 0 $jenkins_container_id sh
 
 echo "Verify the Linux Distribution"
 cat /etc/issue
