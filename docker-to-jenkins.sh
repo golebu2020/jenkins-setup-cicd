@@ -18,6 +18,8 @@ docker ps
 echo "log into the container as a root user..."
 docker exec -itu0 jenkins_container_id bash
 
+curl https://get.docker.com > dockerinstall && chmod 777 dockerinstall && ./dockerinstall
+
 echo "adding read-write permission for the file docker.sock"
 chmod 666 /var/run/docker.sock
 
