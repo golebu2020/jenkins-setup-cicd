@@ -57,7 +57,7 @@ docker run -dp8080:8080 -p50000:50000 \
 -v $(which docker):/usr/bin/docker jenkins/jenkins:lts
 
 echo "log into the container as a root user..."
-docker exec -itu0 $jenkins_container_id bash
+docker exec -it -u 0 $jenkins_container_id bash
 
 curl https://get.docker.com > dockerinstall && chmod 777 dockerinstall && ./dockerinstall
 
