@@ -54,20 +54,19 @@ docker stop $jenkins_container_id
 docker run -dp8080:8080 -p50000:50000 \
 -v jenkins_home:/var/jenkins_home \
 -v /var/run/docker.sock:/var/run/docker.sock \
--v $(which docker):/usr/bin/docker  jenkins/jenkins:lts
-
-docker ps
+-v $(which docker):/usr/bin/docker jenkins/jenkins:lts
 
 echo "log into the container as a root user..."
-docker exec -itu0 jenkins_container_id bash
+docker exec -itu0 $jenkins_container_id bash
 
 curl https://get.docker.com > dockerinstall && chmod 777 dockerinstall && ./dockerinstall
 
 echo "adding read-write permission for the file docker.sock"
 chmod 666 /var/run/docker.sock
 
-echo "logout and signin as a root user"
-docker exec -it jenkins_container_id bash
+echo "logout and signin as a jenkins user"
+exit
+docker exec -it $jenkins_container_id bash
 
 echo "try to install redis container to test"
 docker pull redis
