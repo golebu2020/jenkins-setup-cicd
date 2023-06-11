@@ -1,7 +1,7 @@
 ## Use the following steps to setup Jenkins on a live server:
 ####
     apt update
-#### 2.) apt install git 
+    apt install git 
 #### 3.) git clone https://github.com/golebu2020/jenkins-setup-cicd 
 #### 4.) mv jenkins-setup-cicd/jenkins.sh ~
 #### 5.) mv jenkins-setup-cicd/docker-to-jenkins.sh ~
