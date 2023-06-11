@@ -12,3 +12,4 @@
     mv jenkins-setup-cicd/jenkins.sh ~
 
 #### Run the shell script `jenkins.sh`
+    bash jenkins.sh
