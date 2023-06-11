@@ -10,6 +10,5 @@
 
 #### Copy jenkins to the home directory
     mv jenkins-setup-cicd/jenkins.sh ~
-#### 5.) mv jenkins-setup-cicd/docker-to-jenkins.sh ~
-#### 6.) bash jenkins.sh
-#### 7.) bash docker-to-jenkins.sh
+
+#### Run the shell script `jenkins.sh`
