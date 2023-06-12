@@ -4,14 +4,15 @@ echo "Updating apt..."
 apt update
 
 echo "Installing docker and docker-compose..."
-apt install docker docker-compose 
+apt install docker.io
 
 echo "Installing jenkins docker image and running it..."
-docker run --name jenkins_docker1 -d -p 8080:8080 -p50000:50000 \
+docker run --name jenkins_01 -d -p 8080:8080 -p50000:50000 \
 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
 
 echo "Fetching the container id"
 jenkinscont1=docker ps -aqf jenkins_docker1
+docker ps -qf name=nexus
 
 
 echo "Log into the container as a root user"
