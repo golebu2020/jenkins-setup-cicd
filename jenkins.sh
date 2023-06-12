@@ -11,9 +11,7 @@ docker run --name jenkins_01 -d -p 8080:8080 -p50000:50000 \
 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
 
 echo "Fetching the container id"
-jenkinscont1=docker ps -aqf jenkins_docker1
-docker ps -qf name=nexus
-
+jenkinscont1=docker ps -qf name=jenkins_01
 
 echo "Log into the container as a root user"
 docker exec -u 0 -it $jenkinscont1 sh
@@ -51,15 +49,14 @@ echo "Fetching the container id"
 
 echo "Stop the container from running"
 
-jenkinscont1=docker ps -aqf jenkins_docker1
 docker stop $jenkinscont1
+docker rm -vf $(docker ps -qf)
 
-docker run --name jenkins_docker2 -d -p 8080:8080 -p 50000:50000 \
+docker run --name jenkins_02 -d -p 8080:8080 -p 50000:50000 \
 -v jenkins_home:/var/jenkins_home \
--v /var/run/docker.sock:/var/run/docker.sock \
--v $(which docker):/usr/bin/docker jenkins/jenkins:lts
+-v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins:lts
 
-jenkinscont2=docker ps -aqf jenkins_docker2
+jenkinscont2=docker ps -qf name=jenkins_02
 echo "log into the container as a root user..."
 docker exec -it -u 0 $jenkinscont2 bash
 
@@ -72,9 +69,13 @@ echo "logout and signin as a jenkins user"
 exit
 docker exec -it $jenkinscont2 bash
 
-echo "try to install redis container to test"
-docker pull redis
+echo "Installing nexus"
+docker volume create --name nexus-data
+docker run -d -p 8081:8081 -p 8082:8082 --name nexus -v nexus-data:/nexus-data sonatype/nexus3
 
-echo "redis has been installed!"
+touch /etc/docker/daemon.json
+#Please edit the server_ip_address
+echo "{'Insecure-registries': ['server_ip_address:8082']}" > /etc/docker/daemon.json
+
 
 
