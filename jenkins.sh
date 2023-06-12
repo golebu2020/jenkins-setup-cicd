@@ -77,5 +77,9 @@ touch /etc/docker/daemon.json
 #Please edit the server_ip_address
 echo "{'Insecure-registries': ['server_ip_address:8082']}" > /etc/docker/daemon.json
 
+systemctl restart docker
+docker start nexus jenkins_02
+
+
 
 
