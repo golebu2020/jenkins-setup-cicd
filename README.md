@@ -1,5 +1,5 @@
 ## Installing Jenkins and Nexus on a Remote Server for CI/CD
-#### Update apt
+#### 1. Update apt
     apt update
 
 #### Install Docker"
