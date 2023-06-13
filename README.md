@@ -74,7 +74,13 @@
 #### Edit the Server Ip Address
     echo "{'Insecure-registries': ['server_ip_address:8082']}" > /etc/docker/daemon.json
 
-#### Stop Docker Container and Start Docker Containaer
-    systemctl restart docker && docker start nexus jenkins2
+#### Stop Docker Container
+    systemctl restart docker 
+    
+#### Check the Updated Registried on Docker
+    docker info
+    
+#### Restart Docker and Nexu
+    docker start nexus jenkins2
 
 
