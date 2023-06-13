@@ -11,34 +11,31 @@
     -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
 
 #### Log into the Container as Root User
-docker exec -u 0 -it jenkins1 sh
+    docker exec -u 0 -it jenkins1 sh
 
-echo "Verify the Linux Distribution"
-cat /etc/issue
+#### Verify the Linux Distribution"
+    cat /etc/issue
 
-echo "update apt"
-apt update
+#### Update Apt
+    apt update
 
-echo "install curl..."
-apt install curl
+#### Install Curl
+    apt install curl
 
-echo "download script for installing nodejs and npm"
-curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
-ls
+#### Download Script for Installing nodejs and npm"
+    curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
 
-echo "Execute the script"
-bash nodesource_setup.sh
+#### Execute the Shell Script
+    bash nodesource_setup.sh
 
-echo "Install nodejs..."
-apt install nodejs
-apt install npm
+#### Install nodejs
+    apt install nodejs && apt install npm
 
-nodejs -v
-npm -v
+#### Verify Installation
+    nodejs -v
+    npm -v
 
-echo "You're logged in as a root user"
-
-echo "Leave the shell mode"
+#### Logout of the Shell"
 exit
 
 echo "Fetching the container id"
