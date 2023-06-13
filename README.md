@@ -42,24 +42,26 @@
     docker stop jenkins1
 
 #### Reinstall Jenkins Container
-    docker run --name jenkins_docker2 -d -p 8080:8080 -p 50000:50000 \
+    docker run --name jenkins2 -d -p 8080:8080 -p 50000:50000 \
     -v jenkins_home:/var/jenkins_home \
     -v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins:lts
 
 #### Log into the Container as a Root User
-docker exec -it -u 0 $jenkinscont2 bash
+    docker exec -it -u 0 jenkins2 sh
 
-curl https://get.docker.com > dockerinstall && chmod 777 dockerinstall && ./dockerinstall
+#### Install Docker in the Container
+    curl https://get.docker.com > dockerinstall && chmod 777 dockerinstall && ./dockerinstall
 
-echo "adding read-write permission for the file docker.sock"
-chmod 666 /var/run/docker.sock
+#### Adding Read-Write Permission for the File docker.sock
+    chmod 666 /var/run/docker.sock
 
-echo "logout and signin as a jenkins user"
-exit
-docker exec -it $jenkinscont2 bash
+#### Logout and Sign In as a Jenkins User
+    exit
+    
+#### LogIn as a Regular User
+    docker exec -it jenkins2 sh
 
-echo "try to install redis container to test"
-docker pull redis
+#### Testing by Installing Redis as an Image
+    docker pull redis
 
-echo "redis has been installed!"
 
