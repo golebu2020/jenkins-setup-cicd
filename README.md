@@ -36,23 +36,17 @@
     npm -v
 
 #### Logout of the Shell"
-exit
+    exit
+    
+#### Stop the Container
+    docker stop jenkins1
 
-echo "Fetching the container id"
+#### Reinstall Jenkins Container
+    docker run --name jenkins_docker2 -d -p 8080:8080 -p 50000:50000 \
+    -v jenkins_home:/var/jenkins_home \
+    -v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins:lts
 
-
-echo "Stop the container from running"
-
-jenkinscont1=docker ps -aqf jenkins_docker1
-docker stop $jenkinscont1
-
-docker run --name jenkins_docker2 -d -p 8080:8080 -p 50000:50000 \
--v jenkins_home:/var/jenkins_home \
--v /var/run/docker.sock:/var/run/docker.sock \
--v $(which docker):/usr/bin/docker jenkins/jenkins:lts
-
-jenkinscont2=docker ps -aqf jenkins_docker2
-echo "log into the container as a root user..."
+#### Log into the Container as a Root User
 docker exec -it -u 0 $jenkinscont2 bash
 
 curl https://get.docker.com > dockerinstall && chmod 777 dockerinstall && ./dockerinstall
