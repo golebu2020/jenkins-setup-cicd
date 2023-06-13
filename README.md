@@ -61,5 +61,20 @@
 
 #### Testing by Installing Redis as an Image
     docker pull redis
+    
+#### Exit from the Container
+    exit
+    
+#### Installing Nexus
+    docker volume create --name nexus-data && docker run -d -p 8081:8081 -p 8082:8082 --name nexus -v nexus-data:/nexus-data sonatype/nexus3
+
+#### Create the daemon.json file in /etc/docker/daemon.json
+    touch /etc/docker/daemon.json
+    
+#### Edit the Server Ip Address
+    echo "{'Insecure-registries': ['server_ip_address:8082']}" > /etc/docker/daemon.json
+
+#### Stop Docker Container and Start Docker Containaer
+    systemctl restart docker && docker start nexus jenkins2
 
 
