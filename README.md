@@ -2,86 +2,86 @@
 #### 1. Update apt
     apt update
 
-#### Install Docker"
+#### 2. Install Docker"
     apt install docker.io
 
-#### Installing and Run Jenkins Container"
+#### 3. Installing and Run Jenkins Container"
     docker run --name jenkins1 -d -p 8080:8080 -p 50000:50000 \
     -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
 
-#### Log into the Container as Root User
+#### 4. Log into the Container as Root User
     docker exec -u 0 -it jenkins1 sh
 
-#### Verify the Linux Distribution"
+#### 5. Verify the Linux Distribution"
     cat /etc/issue
 
-#### Update Apt
+#### 6. Update Apt
     apt update
 
-#### Install Curl
+#### 7. Install Curl
     apt install curl
 
-#### Download Script for Installing nodejs and npm"
+#### 8. Download Script for Installing nodejs and npm"
     curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
 
-#### Execute the Shell Script
+#### 9. Execute the Shell Script
     bash nodesource_setup.sh
 
-#### Install nodejs
+#### 10. Install nodejs
     apt install nodejs && apt install npm
 
-#### Verify Installation
+#### 11. Verify Installation
     nodejs -v
     npm -v
 
-#### Logout of the Shell"
+#### 12. Logout of the Shell"
     exit
     
-#### Stop the Container
+#### 13. Stop the Container
     docker stop jenkins1
 
-#### Reinstall Jenkins Container
+#### 14. Reinstall Jenkins Container
     docker run --name jenkins2 -d -p 8080:8080 -p 50000:50000 \
     -v jenkins_home:/var/jenkins_home \
     -v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins:lts
 
-#### Log into the Container as a Root User
+#### 15. Log into the Container as a Root User
     docker exec -it -u 0 jenkins2 sh
 
-#### Install Docker in the Container
+#### 16. Install Docker in the Container
     curl https://get.docker.com > dockerinstall && chmod 777 dockerinstall && ./dockerinstall
 
-#### Adding Read-Write Permission for the File docker.sock
+#### 17. Adding Read-Write Permission for the File docker.sock
     chmod 666 /var/run/docker.sock
 
-#### Logout and Sign In as a Jenkins User
+#### 18. Logout and Sign In as a Jenkins User
     exit
     
-#### LogIn as a Regular User
+#### 19. LogIn as a Regular User
     docker exec -it jenkins2 sh
 
-#### Testing by Installing Redis as an Image
+#### 20. Testing by Installing Redis as an Image
     docker pull redis
     
-#### Exit from the Container
+#### 21. Exit from the Container
     exit
     
-#### Installing Nexus
+#### 22. Installing Nexus
     docker volume create --name nexus-data && docker run -d -p 8081:8081 -p 8082:8082 --name nexus -v nexus-data:/nexus-data sonatype/nexus3
 
-#### Create the daemon.json file in /etc/docker/daemon.json
+#### 23. Create the daemon.json file in /etc/docker/daemon.json
     touch /etc/docker/daemon.json
     
-#### Edit the Server Ip Address
+#### 24. Edit the Server Ip Address
     echo "{'Insecure-registries': ['server_ip_address:8082']}" > /etc/docker/daemon.json
 
-#### Stop Docker Container
+#### 25. Stop Docker Container
     systemctl restart docker 
     
-#### Check the Updated Registried on Docker
+#### 26. Check the Updated Registried on Docker
     docker info
     
-#### Restart Docker and Nexu
+#### 27. Restart Docker and Nexu
     docker start nexus jenkins2
 
 
