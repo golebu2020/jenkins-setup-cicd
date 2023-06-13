@@ -2,7 +2,6 @@
 
 echo "Updating apt..."
 apt update
-apt install git
 
 echo "Installing docker and docker-compose..."
 apt install docker.io --yes
