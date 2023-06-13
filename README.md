@@ -1,19 +1,3 @@
-## Use the following steps to setup Jenkins on a live server:
-#### Update apt
-    apt update
-    
-#### Install git
-    apt install git 
-    
-#### Clone the repo
-    git clone https://github.com/golebu2020/jenkins-setup-cicd 
-
-#### Copy jenkins to the home directory
-    mv jenkins-setup-cicd/jenkins.sh ~
-
-#### Run the shell script `jenkins.sh`
-    bash jenkins.sh
-    
 #! /bin/bash
 
 #### Update apt
@@ -27,11 +11,8 @@
     -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
 
 #### Fetching the Container ID
-jenkinscont1=docker ps -aqf jenkins_docker1
-
-
 echo "Log into the container as a root user"
-docker exec -u 0 -it $jenkinscont1 sh
+docker exec -u 0 -it jenkins1 sh
 
 echo "Verify the Linux Distribution"
 cat /etc/issue
