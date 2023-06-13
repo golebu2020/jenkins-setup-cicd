@@ -10,8 +10,7 @@
     docker run --name jenkins1 -d -p 8080:8080 -p 50000:50000 \
     -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
 
-#### Fetching the Container ID
-echo "Log into the container as a root user"
+#### Log into the Container as Root User
 docker exec -u 0 -it jenkins1 sh
 
 echo "Verify the Linux Distribution"
